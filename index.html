@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Nation - AI-Powered Scripture Analysis</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+                    <defs>
+                        <radialGradient id="drupelet1" cx="40%" cy="40%">
+                            <stop offset="0%" stop-color="#e879f9" />
+                            <stop offset="30%" stop-color="#c026d3" />
+                            <stop offset="70%" stop-color="#a21caf" />
+                            <stop offset="100%" stop-color="#86198f" />
+                        </radialGradient>
+                        <radialGradient id="drupelet2" cx="35%" cy="35%">
+                            <stop offset="0%" stop-color="#d946ef" />
+                            <stop offset="30%" stop-color="#a855f7" />
+                            <stop offset="70%" stop-color="#9333ea" />
+                            <stop offset="100%" stop-color="#7c3aed" />
+                        </radialGradient>
+                        <radialGradient id="drupelet3" cx="38%" cy="38%">
+                            <stop offset="0%" stop-color="#f0abfc" />
+                            <stop offset="30%" stop-color="#d946ef" />
+                            <stop offset="70%" stop-color="#c026d3" />
+                            <stop offset="100%" stop-color="#a21caf" />
+                        </radialGradient>
+                        <linearGradient id="stemGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#65a30d" />
+                            <stop offset="50%" stop-color="#4d7c0f" />
+                            <stop offset="100%" stop-color="#3f6212" />
+                        </linearGradient>
+                        <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#84cc16" />
+                            <stop offset="50%" stop-color="#65a30d" />
+                            <stop offset="100%" stop-color="#4d7c0f" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 15 Q52 18, 51 22 Q50 26, 50 30" stroke="url(#stemGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                    <path d="M50 18 Q40 15, 35 18 Q32 20, 33 24 Q34 28, 38 30 Q42 32, 47 30 Q50 28, 50 24 Z" fill="url(#leafGradient)" />
+                    <circle cx="45" cy="45" r="5.5" fill="url(#drupelet2)" opacity="0.7" />
+                    <circle cx="55" cy="45" r="5.5" fill="url(#drupelet2)" opacity="0.7" />
+                    <circle cx="50" cy="32" r="5.5" fill="url(#drupelet1)" />
+                    <circle cx="44" cy="36" r="6" fill="url(#drupelet3)" />
+                    <circle cx="56" cy="36" r="6" fill="url(#drupelet1)" />
+                    <circle cx="50" cy="42" r="6.5" fill="url(#drupelet3)" />
+                    <circle cx="42" cy="44" r="6" fill="url(#drupelet1)" />
+                    <circle cx="58" cy="44" r="6" fill="url(#drupelet3)" />
+                    <circle cx="50" cy="51" r="7" fill="url(#drupelet1)" />
+                    <circle cx="41" cy="52" r="6.5" fill="url(#drupelet3)" />
+                    <circle cx="59" cy="52" r="6.5" fill="url(#drupelet1)" />
+                    <circle cx="50" cy="60" r="6.5" fill="url(#drupelet3)" />
+                    <circle cx="43" cy="61" r="6" fill="url(#drupelet1)" />
+                    <circle cx="57" cy="61" r="6" fill="url(#drupelet3)" />
+                    <circle cx="50" cy="69" r="6" fill="url(#drupelet1)" />
+                    <circle cx="50" cy="77" r="4.5" fill="url(#drupelet3)" />
+                    <circle cx="51" cy="31" r="1.8" fill="white" opacity="0.6" />
+                    <circle cx="51" cy="41" r="2.2" fill="white" opacity="0.5" />
+                    <circle cx="51" cy="50" r="2.5" fill="white" opacity="0.6" />
+                    <circle cx="51" cy="59" r="2.2" fill="white" opacity="0.5" />
+                    <circle cx="51" cy="68" r="2" fill="white" opacity="0.5" />
+                </svg>
+                <span class="logo-text">Bible Nation</span>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" data-page="home">Home</a>
+                <a href="#" data-page="browse">Browse</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">Read ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#" data-page="reader" data-version="KJV">King James Version</a>
+                        <a href="#" data-page="reader" data-version="NIV">New International Version</a>
+                        <a href="#" data-page="reader" data-version="ESV">English Standard Version</a>
+                        <a href="#" data-page="reader" data-version="NKJV">New King James Version</a>
+                    </div>
+                </div>
+                <a href="#" data-page="dashboard">Dashboard</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search scriptures..." id="headerSearch">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/>
+                        <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <button class="btn-secondary" id="signInBtn">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1 class="hero-title animate-fade-in">Discover Deeper Meaning in Scripture</h1>
+                    <p class="hero-subtitle animate-fade-in-delay">AI-powered analysis to help you understand and apply biblical teachings in your daily life</p>
+                    <div class="hero-buttons animate-fade-in-delay-2">
+                        <button class="btn-primary" id="getStartedBtn">Get Started</button>
+                        <button class="btn-outline" id="learnMoreBtn">Learn More</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Powerful Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📖</div>
+                            <h3>Deep Analysis</h3>
+                            <p>Get comprehensive breakdowns of themes, context, and practical applications</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <h3>Cross-References</h3>
+                            <p>Discover related passages and build connections across scripture</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📝</div>
+                            <h3>Personal Notes</h3>
+                            <p>Save insights and reflections for each verse you study</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h3>Track Progress</h3>
+                            <p>Monitor your reading journey and study habits</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Browse/Analysis Page -->
+        <div id="browsePage" class="page">
+            <div class="container">
+                <div class="browse-layout">
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <h3>Recent Analyses</h3>
+                        <div id="recentAnalyses" class="recent-list">
+                            <p class="empty-state">No recent analyses yet. Start by analyzing a scripture passage!</p>
+                        </div>
+                    </aside>
+
+                    <!-- Main Content -->
+                    <div class="main-area">
+                        <div class="scripture-input-section">
+                            <h2>Analyze Scripture</h2>
+                            <div class="input-group">
+                                <label for="scriptureSelect">Select a Passage</label>
+                                <select id="scriptureSelect" class="scripture-select">
+                                    <option value="">Choose a scripture...</option>
+                                    <option value="John 3:16">John 3:16</option>
+                                    <option value="Psalm 23">Psalm 23</option>
+                                    <option value="Matthew 5:1-12">Matthew 5:1-12 (Beatitudes)</option>
+                                    <option value="Romans 8:28">Romans 8:28</option>
+                                    <option value="Philippians 4:13">Philippians 4:13</option>
+                                    <option value="Genesis 1:1">Genesis 1:1</option>
+                                    <option value="Proverbs 3:5-6">Proverbs 3:5-6</option>
+                                    <option value="1 Corinthians 13">1 Corinthians 13</option>
+                                </select>
+                            </div>
+                            
+                            <div class="divider">
+                                <span>OR</span>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="scriptureText">Paste or Type Scripture</label>
+                                <textarea id="scriptureText" class="scripture-textarea" rows="6" placeholder="Enter scripture text here..."></textarea>
+                            </div>
+
+                            <button class="btn-primary btn-analyze" id="analyzeBtn">
+                                <span>Analyze Scripture</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 4L10 16M4 10L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div id="analysisResults" class="analysis-results" style="display: none;">
+                            <div class="results-header">
+                                <h2 id="resultsTitle">Analysis Results</h2>
+                                <button class="btn-secondary btn-save" id="saveAnalysisBtn">Save Analysis</button>
+                            </div>
+                            
+                            <div class="analysis-tabs">
+                                <button class="tab-btn active" data-tab="overview">Overview</button>
+                                <button class="tab-btn" data-tab="themes">Themes</button>
+                                <button class="tab-btn" data-tab="context">Historical Context</button>
+                                <button class="tab-btn" data-tab="application">Application</button>
+                                <button class="tab-btn" data-tab="references">Cross-References</button>
+                            </div>
+
+                            <div class="tab-content">
+                                <div id="overviewTab" class="tab-pane active"></div>
+                                <div id="themesTab" class="tab-pane"></div>
+                                <div id="contextTab" class="tab-pane"></div>
+                                <div id="applicationTab" class="tab-pane"></div>
+                                <div id="referencesTab" class="tab-pane"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bible Reader Page -->
+        <div id="readerPage" class="page">
+            <div class="container">
+                <div class="reader-layout">
+                    <aside class="reader-sidebar">
+                        <h3>Navigation</h3>
+                        <div class="input-group">
+                            <label>Book</label>
+                            <select id="bookSelect" class="form-select">
+                                <option value="Genesis">Genesis</option>
+                                <option value="Exodus">Exodus</option>
+                                <option value="Psalms">Psalms</option>
+                                <option value="Proverbs">Proverbs</option>
+                                <option value="Matthew">Matthew</option>
+                                <option value="John" selected>John</option>
+                                <option value="Romans">Romans</option>
+                                <option value="Revelation">Revelation</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Chapter</label>
+                            <input type="number" id="chapterInput" class="form-input" value="1" min="1">
+                        </div>
+                        <button class="btn-primary" id="loadChapterBtn">Load Chapter</button>
+                    </aside>
+
+                    <div class="reader-content">
+                        <div class="reader-header">
+                            <h2 id="chapterTitle">John 1</h2>
+                            <div class="reader-controls">
+                                <select id="versionSelect" class="form-select-sm">
+                                    <option value="KJV">KJV</option>
+                                    <option value="NIV">NIV</option>
+                                    <option value="ESV">ESV</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="verseContainer" class="verse-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <div class="container">
+                <h2 class="page-title">Your Dashboard</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="chaptersRead">0</div>
+                            <div class="stat-label">Chapters Read</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✨</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="analysesCount">0</div>
+                            <div class="stat-label">Analyses Created</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="notesCount">0</div>
+                            <div class="stat-label">Notes Saved</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="streakDays">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-sections">
+                    <div class="dashboard-section">
+                        <h3>Recent Activity</h3>
+                        <div id="recentActivity" class="activity-list">
+                            <p class="empty-state">No recent activity yet. Start exploring scripture!</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>Reading Progress</h3>
+                        <div class="progress-container">
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span>Old Testament</span>
+                                    <span id="otProgress">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="otProgressBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span>New Testament</span>
+                                    <span id="ntProgress">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="ntProgressBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>Bible Nation</h4>
+                <p>AI-powered scripture analysis and study tools</p>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="#">Study Guides</a>
+                <a href="#">Prayer Resources</a>
+                <a href="#">Daily Devotionals</a>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <a href="#">Our Mission</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bible Nation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Modal for Verse Notes -->
+    <div id="verseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalVerseTitle">Verse Notes</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="verseNoteText" class="modal-textarea" rows="6" placeholder="Add your notes and reflections..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelNoteBtn">Cancel</button>
+                <button class="btn-primary" id="saveNoteBtn">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
